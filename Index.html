@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 1% Rule - Become Dangerous</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #0c0c0c;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        header {
+            background: #050505;
+            padding: 20px 0;
+            border-bottom: 1px solid #2a2a2a;
+            position: relative;
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4a373, transparent);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #d4a373;
+        }
+        .logo span {
+            color: #4a4a4a;
+            font-weight: 300;
+        }
+        .tagline {
+            color: #888;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .hero {
+            padding: 80px 0;
+            background: #0c0c0c;
+            position: relative;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(45deg, rgba(212, 163, 115, 0.02) 0px, rgba(212, 163, 115, 0.02) 2px, transparent 2px, transparent 8px);
+            pointer-events: none;
+        }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 60px;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-content {
+            flex: 1 1 450px;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            color: #ffffff;
+        }
+        .hero-content h1 span {
+            color: #d4a373;
+            border-bottom: 3px solid #d4a373;
+            padding-bottom: 5px;
+        }
+        .hero-content .subhead {
+            font-size: 1.3rem;
+            color: #aaa;
+            margin: 25px 0 30px;
+            border-left: 4px solid #d4a373;
+            padding-left: 20px;
+        }
+        .hero-image {
+            flex: 1 1 350px;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 30px 40px -15px black;
+            border: 1px solid #2a2a2a;
+            transition: transform 0.3s;
+        }
+        .hero-image img:hover {
+            transform: scale(1.02);
+            border-color: #d4a373;
+        }
+        
+        .stats {
+            background: #050505;
+            padding: 30px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 30px;
+            text-align: center;
+        }
+        .stat-item {
+            flex: 1;
+            min-width: 150px;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #d4a373;
+            line-height: 1;
+        }
+        .stat-label {
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+        }
+        
+        .section-heading {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+            color: #fff;
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background: #d4a373;
+        }
+        
+        .principles {
+            padding: 80px 0;
+            background: #0a0a0a;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .principle-card {
+            background: #111111;
+            padding: 35px;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .principle-card:hover {
+            border-color: #d4a373;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -10px black;
+        }
+        .principle-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #d4a373;
+            font-weight: 600;
+        }
+        .principle-card p {
+            color: #999;
+            font-size: 0.95rem;
+        }
+        .principle-number {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 3rem;
+            font-weight: 800;
+            color: #2a2a2a;
+            line-height: 1;
+        }
+        
+        .bonus {
+            padding: 60px 0;
+            background: #050505;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .bonus-content {
+            background: #111;
+            padding: 40px;
+            border: 1px solid #d4a373;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .bonus-text h3 {
+            font-size: 2rem;
+            color: #d4a373;
+            margin-bottom: 10px;
+        }
+        .bonus-text p {
+            color: #aaa;
+            font-size: 1.1rem;
+        }
+        .bonus-badge {
+            background: #d4a373;
+            color: #050505;
+            padding: 10px 25px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            border-radius: 0;
+            text-transform: uppercase;
+        }
+        
+        .testimonials {
+            padding: 80px 0;
+            background: #0a0a0a;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .testimonial-card {
+            background: #111;
+            padding: 30px;
+            border: 1px solid #2a2a2a;
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 5rem;
+            color: #2a2a2a;
+            font-family: serif;
+            line-height: 1;
+        }
+        .testimonial-card p {
+            color: #ccc;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            padding-left: 20px;
+        }
+        .testimonial-author {
+            color: #d4a373;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .pricing {
+            padding: 80px 0;
+            background: #0c0c0c;
+            text-align: center;
+        }
+        .price-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #111;
+            padding: 50px;
+            border: 1px solid #2a2a2a;
+            position: relative;
+        }
+        .price-box::before, .price-box::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-color: #d4a373;
+            border-style: solid;
+            border-width: 0;
+        }
+        .price-box::before {
+            top: 10px;
+            left: 10px;
+            border-top-width: 2px;
+            border-left-width: 2px;
+        }
+        .price-box::after {
+            bottom: 10px;
+            right: 10px;
+            border-bottom-width: 2px;
+            border-right-width: 2px;
+        }
+        .price-tag {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #d4a373;
+            line-height: 1;
+            margin: 20px 0;
+        }
+        .price-tag small {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 400;
+        }
+        .btn {
+            display: inline-block;
+            background: transparent;
+            color: #d4a373;
+            border: 2px solid #d4a373;
+            padding: 16px 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            margin: 30px 0 20px;
+        }
+        .btn:hover {
+            background: #d4a373;
+            color: #050505;
+        }
+        
+        footer {
+            background: #050505;
+            padding: 40px 0;
+            border-top: 1px solid #1a1a1a;
+            text-align: center;
+            color: #666;
+        }
+        footer a {
+            color: #d4a373;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 700px) {
+            .hero-content h1 { font-size: 2.4rem; }
+            .section-heading { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">1% <span>RULE</span></div>
+            <div class="tagline"></div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1>BECOME <span>DANGEROUS</span></h1>
+                <div class="subhead">Stop being prey. Start being the hunter. The psychology of becoming the man others can't ignore.</div>
+                <p style="color: #bbb; font-size: 1.1rem; margin-bottom: 30px;">Most men are soft. Comfortable. Predictable. You're done with that. This isn't a self-help book. It's a re-wiring.</p>
+                <a href="#" class="btn">CLAIM YOUR EDGE</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/400x500?text=COVER+PLACEHOLDER" alt="The 1% Rule book cover">
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">8</div>
+                <div class="stat-label">CHAPTERS</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">37x</div>
+                <div class="stat-label">COMPOUND EFFECT</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1%</div>
+                <div class="stat-label">DAILY EDGE</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">0</div>
+                <div class="stat-label">FLUFF</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="principles">
+        <div class="container">
+            <h2 class="section-heading">THE CODE</h2>
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <span class="principle-number">01</span>
+                    <h3>THE DOPAMINE TRAP</h3>
+                    <p>Why your brain fights you—and how to reset it so hard things feel easy.</p>
+                </div>
+                <div class="principle-card">
+                    <span class="principle-number">02</span>
+                    <h3>IDENTITY FIRST</h3>
+                    <p>Become the guy who doesn't miss. The man you are is the man you choose.</p>
+                </div>
+                <div class="principle-card">
+                    <span class="principle-number">03</span>
+                    <h3>THE 2-MINUTE RULE</h3>
+                    <p>Kill procrastination at the source. Make starting so easy you can't say no.</p>
+                </div>
+                <div class="principle-card">
+                    <span class="principle-number">04</span>
+                    <h3>ENVIRONMENT DESIGN</h3>
+                    <p>Make good habits automatic and bad habits impossible—no willpower needed.</p>
+                </div>
+                <div class="principle-card">
+                    <span class="principle-number">05</span>
+                    <h3>STACKING & SCHEDULING</h3>
+                    <p>Build chains of automatic behavior. Let the system carry you.</p>
+                </div>
+                <div class="principle-card">
+                    <span class="principle-number">06</span>
+                    <h3>THE FOUR PILLARS</h3>
+                    <p>Sleep, exercise, nutrition, learning. Master these, dominate everything else.</p>
+                </div>
+                <div class="principle-card">
+                    <span class="principle-number">07</span>
+                    <h3>FAILURE-PROOFING</h3>
+                    <p>You will slip. The rule: never miss twice. Get back up in 24 hours.</p>
+                </div>
+                <div class="principle-card">
+                    <span class="principle-number">08</span>
+                    <h3>THE COMPOUND EFFECT</h3>
+                    <p>Small things, done consistently, create unstoppable momentum.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bonus">
+        <div class="container bonus-content">
+            <div class="bonus-text">
+                <h3>⚔️ THE QUICK START GUIDE</h3>
+                <p>One-page cheat sheet. Print it. Follow it. No excuses.</p>
+            </div>
+            <div class="bonus-badge">FREE BONUS</div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-heading">BLOOD PROOF</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>I was stuck in a loop for years. This book broke the cycle. The 2-Minute Rule alone changed everything.</p>
+                    <div class="testimonial-author">MIKE, 34</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>Finally, something that doesn't treat me like I need to "manifest" my way to success. Gritty, real, and it works.</p>
+                    <div class="testimonial-author">DAVE, 41</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>Thought I was just lazy. Turns out my dopamine was fried. This book showed me how to take control back.</p>
+                    <div class="testimonial-author">CHRIS, 29</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <div class="price-box">
+                <h2 class="section-heading" style="margin-bottom: 20px;">ENTER THE 1%</h2>
+                <p style="color: #aaa; font-size: 1.1rem;">Stop waiting. Stop scrolling. Start becoming.</p>
+                <div class="price-tag">$9.97 <small>USD</small></div>
+                <a href="#" class="btn">GET DANGEROUS</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 ALL RIGHTS RESERVED.</p>
+            <p style="margin-top: 10px;">
+                <a href="#">PRIVACY</a> • <a href="#">TERMS</a> • <a href="#">CONTACT</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
